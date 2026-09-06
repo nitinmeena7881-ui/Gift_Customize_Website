@@ -438,37 +438,23 @@ async function submitOrder(event) {
     /* =========================
        SAVE TO SUPABASE
     ========================= */
-
-    const { data, error } =
-      await supabaseClient
-        .from("orders")
-        .insert({
-
-          order_id: orderId,
-
-          customer_name: name,
-
-          mobile: mobile,
-
-          address: address,
-
-          city: city,
-
-          state: state,
-
-          pincode: pincode,
-
-          items: orderItems,
-
-          total_amount: total,
-
-          payment_status: "Pending",
-
-          order_status: "Pending"
-
-        })
-        .select()
-        .single();
+const { error } =
+  await supabaseClient
+    .from("orders")
+    .insert({
+      order_id: orderId,
+      customer_name: name,
+      mobile: mobile,
+      address: address,
+      city: city,
+      state: state,
+      pincode: pincode,
+      items: orderItems,
+      total_amount: total,
+      payment_status: "Pending",
+      order_status: "Pending"
+    });
+    
 
 
     /* =========================
