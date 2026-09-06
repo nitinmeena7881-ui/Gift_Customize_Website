@@ -839,6 +839,7 @@ async function submitPayment() {
    WHATSAPP ORDER DETAILS
 ========================= */
 
+
 function sendOrderOnWhatsApp() {
 
   const order =
@@ -849,10 +850,10 @@ function sendOrderOnWhatsApp() {
     );
 
 
-  if (!order) {
+  if (!order || !order.orderId) {
 
     alert(
-      "Order information not found."
+      "Order information not found. Please create the order again."
     );
 
     return;
@@ -874,8 +875,11 @@ Total Amount: ${money(order.total)}
 
 Payment: Online Payment
 
-I have placed my order.`;
+UTR / Transaction ID: ${order.utr || "Not submitted"}
 
+Order Status: Payment Submitted
+
+I have placed my order and completed the payment.`;
 
 
   const url =
