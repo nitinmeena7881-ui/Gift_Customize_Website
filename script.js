@@ -5,41 +5,72 @@ function money(n) {
   return "₹" + Number(n).toFixed(2);
 }
 
+
 /* =========================
    50% OFF HAMPERS
 ========================= */
 
 function renderProducts() {
+
   const box = document.getElementById("products");
 
   box.innerHTML = products.map((p, i) => `
+
     <article class="product">
 
       <div class="product-img">
+
         <img
           src="${p.image}"
           alt="${p.name}"
           loading="lazy"
         >
+
       </div>
+
 
       <div class="product-body">
 
-        <span class="badge">50% OFF</span>
+        <span class="badge">
+          50% OFF
+        </span>
 
-        <h3>${p.name}</h3>
 
-        <p>${p.category} • Personalized gifting</p>
+        <h3>
+          ${p.name}
+        </h3>
+
+
+        <p>
+          ${p.category} • Personalized gifting
+        </p>
+
 
         <div class="price">
-          <span class="old">${money(p.original)}</span>
-          <b class="sale">${money(p.price)}</b>
+
+          <span class="old">
+            ${money(p.original)}
+          </span>
+
+          <b class="sale">
+            ${money(p.price)}
+          </b>
+
         </div>
 
+
         <div class="inside">
-          <strong>What's Inside</strong>
-          <p>${p.description}</p>
+
+          <strong>
+            What's Inside
+          </strong>
+
+          <p>
+            ${p.description}
+          </p>
+
         </div>
+
 
         <button
           class="btn dark"
@@ -51,51 +82,83 @@ function renderProducts() {
       </div>
 
     </article>
+
   `).join("");
 }
 
 
 /* =========================
-   CUSTOMIZE — ANY 4 ₹599
+   CUSTOMIZE
 ========================= */
 
 function renderCustom() {
-  const box = document.getElementById("customGrid");
 
-  box.innerHTML = customItems.map((x, i) => `
-    <div
-      class="custom-item ${selected.includes(i) ? "selected" : ""}"
-      onclick="toggleCustom(${i})"
-    >
+  const box =
+    document.getElementById("customGrid");
 
-      <div class="custom-photo">
-        <img
-          src="${x[0]}"
-          alt="${x[1]}"
-          loading="lazy"
-        >
+
+  box.innerHTML =
+    customItems.map((x, i) => `
+
+      <div
+        class="custom-item ${
+          selected.includes(i)
+            ? "selected"
+            : ""
+        }"
+        onclick="toggleCustom(${i})"
+      >
+
+        <div class="custom-photo">
+
+          <img
+            src="${x[0]}"
+            alt="${x[1]}"
+            loading="lazy"
+          >
+
+        </div>
+
+
+        <b>
+          ${x[1]}
+        </b>
+
+
+        ${
+          selected.includes(i)
+            ? `<small class="selected-label">
+                 ✓ Selected
+               </small>`
+            : `<small>
+                 Tap to select
+               </small>`
+        }
+
       </div>
 
-      <b>${x[1]}</b>
+    `).join("");
 
-      ${
-        selected.includes(i)
-          ? `<small class="selected-label">✓ Selected</small>`
-          : `<small>Tap to select</small>`
-      }
 
-    </div>
-  `).join("");
-
-  document.getElementById("selectedText").textContent =
+  document.getElementById(
+    "selectedText"
+  ).textContent =
     `${selected.length} / 4 selected`;
 
-  document.getElementById("selectedItems").textContent =
+
+  document.getElementById(
+    "selectedItems"
+  ).textContent =
     selected.length
-      ? selected.map(i => customItems[i][1]).join(", ")
+      ? selected
+          .map(i => customItems[i][1])
+          .join(", ")
       : "No items selected";
 
-  document.getElementById("customCart").disabled =
+
+  document.getElementById(
+    "customCart"
+  ).disabled =
     selected.length !== 4;
 }
 
@@ -108,7 +171,10 @@ function toggleCustom(i) {
 
   if (selected.includes(i)) {
 
-    selected = selected.filter(x => x !== i);
+    selected =
+      selected.filter(
+        x => x !== i
+      );
 
   } else if (selected.length < 4) {
 
@@ -121,18 +187,26 @@ function toggleCustom(i) {
 
 
 /* =========================
-   ADD HAMPER TO CART
+   ADD PRODUCT
 ========================= */
 
 function addProduct(i) {
 
   cart.push({
+
     name: products[i].name,
-    price: Number(products[i].price),
+
+    price: Number(
+      products[i].price
+    ),
+
     image: products[i].image
+
   });
 
+
   updateCart();
+
   openCart();
 }
 
@@ -145,24 +219,31 @@ function addCustomToCart() {
 
   if (selected.length !== 4) {
 
-    alert("Please select exactly 4 items.");
+    alert(
+      "Please select exactly 4 items."
+    );
 
     return;
   }
 
+
   cart.push({
 
-    name: "Build Your Own Hamper — Any 4 Items",
+    name:
+      "Build Your Own Hamper — Any 4 Items",
 
     price: 599,
 
-    items: selected.map(
-      i => customItems[i][1]
-    )
+    items:
+      selected.map(
+        i => customItems[i][1]
+      )
 
   });
 
+
   selected = [];
+
 
   renderCustom();
 
@@ -178,52 +259,73 @@ function addCustomToCart() {
 
 function updateCart() {
 
-  document.getElementById("cartCount").textContent =
+  document.getElementById(
+    "cartCount"
+  ).textContent =
     cart.length;
 
+
   const cartBox =
-    document.getElementById("cartItems");
+    document.getElementById(
+      "cartItems"
+    );
+
 
   if (!cart.length) {
 
     cartBox.innerHTML =
-      `<p class="muted">Your cart is empty.</p>`;
+      `<p class="muted">
+        Your cart is empty.
+      </p>`;
 
   } else {
 
-    cartBox.innerHTML = cart.map((x, i) => `
+    cartBox.innerHTML =
+      cart.map((x, i) => `
 
-      <div class="cart-row">
+        <div class="cart-row">
 
-        <span>
+          <span>
 
-          <b>${x.name}</b>
+            <b>
+              ${x.name}
+            </b>
 
-          ${
-            x.items
-              ? `<small style="
+
+            ${
+              x.items
+                ? `<small style="
                     display:block;
                     color:#888;
                     margin-top:5px;
                   ">
-                  ${x.items.join(" • ")}
-                 </small>`
-              : ""
-          }
+                    ${x.items.join(" • ")}
+                  </small>`
+                : ""
+            }
 
-        </span>
+          </span>
 
-        <b>${money(x.price)}</b>
 
-      </div>
+          <b>
+            ${money(x.price)}
+          </b>
 
-    `).join("");
+        </div>
+
+      `).join("");
+
   }
 
-  document.getElementById("cartTotal").textContent =
+
+  document.getElementById(
+    "cartTotal"
+  ).textContent =
+
     money(
       cart.reduce(
-        (total, item) => total + Number(item.price),
+        (total, item) =>
+          total + Number(item.price),
         0
       )
     );
@@ -236,8 +338,11 @@ function updateCart() {
 
 function openCart() {
 
-  document.getElementById("cartModal").style.display =
+  document.getElementById(
+    "cartModal"
+  ).style.display =
     "block";
+
 
   updateCart();
 }
@@ -245,7 +350,9 @@ function openCart() {
 
 function closeCart() {
 
-  document.getElementById("cartModal").style.display =
+  document.getElementById(
+    "cartModal"
+  ).style.display =
     "none";
 }
 
@@ -258,35 +365,50 @@ function checkout() {
 
   if (!cart.length) {
 
-    alert("Please add a product first.");
+    alert(
+      "Please add a product first."
+    );
 
     return;
   }
 
+
   closeCart();
+
 
   const total =
     cart.reduce(
-      (sum, item) => sum + Number(item.price),
+      (sum, item) =>
+        sum + Number(item.price),
       0
     );
 
-  document.getElementById("checkoutItemsCount").textContent =
+
+  document.getElementById(
+    "checkoutItemsCount"
+  ).textContent =
     cart.length;
 
-  document.getElementById("checkoutTotal").textContent =
+
+  document.getElementById(
+    "checkoutTotal"
+  ).textContent =
     money(total);
 
-  document.getElementById("checkoutModal").style.display =
+
+  document.getElementById(
+    "checkoutModal"
+  ).style.display =
     "block";
 }
 
 
 function closeCheckout() {
 
-  document.getElementById("checkoutModal").style.display =
+  document.getElementById(
+    "checkoutModal"
+  ).style.display =
     "none";
-
 }
 
 
@@ -298,53 +420,52 @@ async function submitOrder(event) {
 
   event.preventDefault();
 
+
   if (!cart.length) {
 
-    alert("Your cart is empty.");
+    alert(
+      "Your cart is empty."
+    );
 
     return;
   }
 
 
   const name =
-    document.getElementById("customerName")
-      .value
-      .trim();
+    document.getElementById(
+      "customerName"
+    ).value.trim();
 
 
   const mobile =
-    document.getElementById("customerMobile")
-      .value
-      .trim();
+    document.getElementById(
+      "customerMobile"
+    ).value.trim();
 
 
   const address =
-    document.getElementById("customerAddress")
-      .value
-      .trim();
+    document.getElementById(
+      "customerAddress"
+    ).value.trim();
 
 
   const city =
-    document.getElementById("customerCity")
-      .value
-      .trim();
+    document.getElementById(
+      "customerCity"
+    ).value.trim();
 
 
   const state =
-    document.getElementById("customerState")
-      .value
-      .trim();
+    document.getElementById(
+      "customerState"
+    ).value.trim();
 
 
   const pincode =
-    document.getElementById("customerPincode")
-      .value
-      .trim();
+    document.getElementById(
+      "customerPincode"
+    ).value.trim();
 
-
-  /* =========================
-     VALIDATION
-  ========================= */
 
   if (!/^[0-9]{10}$/.test(mobile)) {
 
@@ -368,7 +489,9 @@ async function submitOrder(event) {
 
   if (name.length < 2) {
 
-    alert("Please enter your full name.");
+    alert(
+      "Please enter your full name."
+    );
 
     return;
   }
@@ -376,35 +499,28 @@ async function submitOrder(event) {
 
   if (address.length < 5) {
 
-    alert("Please enter your complete address.");
+    alert(
+      "Please enter your complete address."
+    );
 
     return;
   }
 
 
-  /* =========================
-     TOTAL
-  ========================= */
-
   const total =
     cart.reduce(
-      (sum, item) => sum + Number(item.price),
+      (sum, item) =>
+        sum + Number(item.price),
       0
     );
 
 
-  /* =========================
-     ORDER ID
-  ========================= */
-
   const orderId =
     "GC-" +
-    Date.now().toString().slice(-8);
+    Date.now()
+      .toString()
+      .slice(-8);
 
-
-  /* =========================
-     ORDER ITEMS
-  ========================= */
 
   const orderItems =
     cart.map(item => ({
@@ -413,19 +529,20 @@ async function submitOrder(event) {
 
       price: Number(item.price),
 
-      image: item.image || null,
+      image:
+        item.image || null,
 
-      items: item.items || []
+      items:
+        item.items || []
 
     }));
 
 
-  /* =========================
-     BUTTON
-  ========================= */
-
   const button =
-    document.getElementById("placeOrderBtn");
+    document.getElementById(
+      "placeOrderBtn"
+    );
+
 
   button.disabled = true;
 
@@ -435,55 +552,62 @@ async function submitOrder(event) {
 
   try {
 
-    /* =========================
-       SAVE TO SUPABASE
-    ========================= */
-const { error } =
-  await supabaseClient
-    .from("orders")
-    .insert({
-      order_id: orderId,
-      customer_name: name,
-      mobile: mobile,
-      address: address,
-      city: city,
-      state: state,
-      pincode: pincode,
-      items: orderItems,
-      total_amount: total,
-      payment_status: "Pending",
-      order_status: "Pending"
-    });
-    
+    const { error } =
+      await supabaseClient
+        .from("orders")
+        .insert({
+
+          order_id: orderId,
+
+          customer_name: name,
+
+          mobile: mobile,
+
+          address: address,
+
+          city: city,
+
+          state: state,
+
+          pincode: pincode,
+
+          items: orderItems,
+
+          total_amount: total,
+
+          payment_status:
+            "Pending",
+
+          order_status:
+            "Pending"
+
+        });
 
 
-    /* =========================
-       ERROR
-    ========================= */
-if (error) {
+    if (error) {
 
-  console.error("Supabase Order Error:", error);
-
-  alert(
-    "Supabase Error:\n" +
-    (error.message || "Unknown error") +
-    "\n\nDetails:\n" +
-    (error.details || "No details")
-  );
-
-  button.disabled = false;
-
-  button.textContent =
-    "Continue to Payment";
-
-  return;
-}
-    
+      console.error(
+        "Supabase Order Error:",
+        error
+      );
 
 
-    /* =========================
-       SAVE ORDER LOCALLY
-    ========================= */
+      alert(
+        "Order could not be created.\n\n" +
+        error.message
+      );
+
+
+      button.disabled = false;
+
+      button.textContent =
+        "Continue to Payment";
+
+      return;
+    }
+
+
+    /* SAVE LAST ORDER */
 
     localStorage.setItem(
       "lastGiftCustomizeOrder",
@@ -509,9 +633,7 @@ if (error) {
     );
 
 
-    /* =========================
-       SUCCESS
-    ========================= */
+    /* SHOW ORDER ID */
 
     document.getElementById(
       "successOrderId"
@@ -537,10 +659,6 @@ if (error) {
       "block";
 
 
-    /* =========================
-       CLEAR CART
-    ========================= */
-
     cart = [];
 
     updateCart();
@@ -561,17 +679,203 @@ if (error) {
 
     console.error(error);
 
+
     alert(
       "Something went wrong. Please try again."
     );
+
 
     button.disabled = false;
 
     button.textContent =
       "Continue to Payment";
+  }
+}
 
+
+/* =========================
+   SUBMIT PAYMENT / UTR
+========================= */
+
+async function submitPayment() {
+
+  const order =
+    JSON.parse(
+      localStorage.getItem(
+        "lastGiftCustomizeOrder"
+      ) || "null"
+    );
+
+
+  if (!order || !order.orderId) {
+
+    alert(
+      "Order information not found. Please create the order again."
+    );
+
+    return;
   }
 
+
+  const utr =
+    document.getElementById(
+      "paymentUtr"
+    ).value.trim();
+
+
+  if (utr.length < 6) {
+
+    alert(
+      "Please enter a valid UTR / Transaction ID."
+    );
+
+    return;
+  }
+
+
+  const button =
+    document.querySelector(
+      ".payment-section button"
+    );
+
+
+  button.disabled = true;
+
+  button.textContent =
+    "Submitting...";
+
+
+  try {
+
+    const { data, error } =
+      await supabaseClient.rpc(
+        "submit_payment",
+        {
+          p_order_id:
+            order.orderId,
+
+          p_utr:
+            utr
+        }
+      );
+
+
+    if (error) {
+
+      console.error(
+        "Payment Error:",
+        error
+      );
+
+
+      alert(
+        "Payment details could not be submitted.\n\n" +
+        error.message
+      );
+
+
+      button.disabled = false;
+
+      button.textContent =
+        "Submit Payment Details";
+
+      return;
+    }
+
+
+    /* SUCCESS */
+
+    button.textContent =
+      "Payment Details Submitted ✓";
+
+
+    button.disabled = true;
+
+
+    alert(
+      "Payment details submitted successfully!\n\n" +
+      "Order ID: " +
+      order.orderId +
+      "\n\n" +
+      "Our team will verify your payment."
+    );
+
+
+    localStorage.removeItem(
+      "lastGiftCustomizeOrder"
+    );
+
+
+  } catch (error) {
+
+    console.error(error);
+
+
+    alert(
+      "Something went wrong. Please try again."
+    );
+
+
+    button.disabled = false;
+
+    button.textContent =
+      "Submit Payment Details";
+  }
+}
+
+
+/* =========================
+   WHATSAPP ORDER DETAILS
+========================= */
+
+function sendOrderOnWhatsApp() {
+
+  const order =
+    JSON.parse(
+      localStorage.getItem(
+        "lastGiftCustomizeOrder"
+      ) || "null"
+    );
+
+
+  if (!order) {
+
+    alert(
+      "Order information not found."
+    );
+
+    return;
+  }
+
+
+  const message =
+    `Hello Gift Customize,
+
+Order ID: ${order.orderId}
+
+Customer: ${order.name}
+
+Mobile: ${order.mobile}
+
+Address: ${order.address}, ${order.city}, ${order.state} - ${order.pincode}
+
+Total Amount: ${money(order.total)}
+
+Payment: Online Payment
+
+I have placed my order.`;
+
+
+
+  const url =
+    "https://wa.me/918003163744?text=" +
+    encodeURIComponent(message);
+
+
+  window.open(
+    url,
+    "_blank"
+  );
 }
 
 
@@ -585,12 +889,11 @@ function closeOrderSuccess() {
     "orderSuccessModal"
   ).style.display =
     "none";
-
 }
 
 
 /* =========================
-   START WEBSITE
+   START
 ========================= */
 
 renderProducts();
