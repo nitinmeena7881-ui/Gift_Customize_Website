@@ -134,30 +134,38 @@ const products = [
   }
 ];
 
-
 const customItems = [
-  ["Shirt", "Premium Shirt Option"],
-  ["Shirt", "Striped Shirt Option"],
-  ["Shirt", "Casual Shirt Option"],
+  ["IMG-20260906-WA0000.jpg", "Customization Item 1"],
+  ["IMG-20260906-WA0001.jpg", "Customization Item 2"],
+  ["IMG-20260906-WA0002.jpg", "Customization Item 3"],
+  ["IMG-20260906-WA0003.jpg", "Customization Item 4"],
+  ["IMG-20260906-WA0004.jpg", "Customization Item 5"],
+  ["IMG-20260906-WA0005.jpg", "Customization Item 6"],
+  ["IMG-20260906-WA0006.jpg", "Customization Item 7"],
+  ["IMG-20260906-WA0007.jpg", "Customization Item 8"],
+  ["IMG-20260906-WA0009.jpg", "Customization Item 9"],
+  ["IMG-20260906-WA0010.jpg", "Customization Item 10"],
+  ["IMG-20260906-WA0011.jpg", "Customization Item 11"],
+  ["IMG-20260906-WA0012.jpg", "Customization Item 12"],
 
-  ["Pant", "Wide-Leg Pant Option"],
-  ["Pant", "Classic Black Pant"],
-
-  ["Shoes", "Premium Sneakers"],
-  ["Shoes", "White Sneakers"],
-  ["Shoes", "Black & Cream Sneakers"],
-
-  ["Watch", "Classic Black Watch"],
-  ["Watch", "Silver Chronograph Watch"],
-
-  ["Bottle", "Black Personalized Bottle"],
-  ["Bottle", "Red Personalized Bottle"],
-  ["Bottle", "White Personalized Bottle"],
-  ["Bottle", "Pink Personalized Bottle"],
-
-  ["Perfume", "Premium Fragrance"],
-  ["Wallet", "Personalized Wallet"],
-
-  ["Photo Frame", "Birthday Photo Frame"],
-  ["Photo Frame", "Personalized Memory Frame"]
+  ["IMG-20260906-WA0033.jpg", "Customization Item 13"],
+  ["IMG-20260906-WA0034.jpg", "Customization Item 14"],
+  ["IMG-20260906-WA0035.jpg", "Customization Item 15"],
+  ["IMG-20260906-WA0036.jpg", "Customization Item 16"],
+  ["IMG-20260906-WA0037.jpg", "Customization Item 17"],
+  ["IMG-20260906-WA0038.jpg", "Customization Item 18"],
+  ["IMG-20260906-WA0039.jpg", "Customization Item 19"],
+  ["IMG-20260906-WA0048.jpg", "Customization Item 20"],
+  ["IMG-20260906-WA0049.jpg", "Customization Item 21"],
+  ["IMG-20260906-WA0050.jpg", "Customization Item 22"],
+  ["IMG-20260906-WA0051.jpg", "Customization Item 23"],
+  ["IMG-20260906-WA0052.jpg", "Customization Item 24"],
+  ["IMG-20260906-WA0053.jpg", "Customization Item 25"],
+  ["IMG-20260906-WA0054.jpg", "Customization Item 26"],
+  ["IMG-20260906-WA0055.jpg", "Customization Item 27"],
+  ["IMG-20260906-WA0056.jpg", "Customization Item 28"],
+  ["IMG-20260906-WA0057.jpg", "Customization Item 29"],
+  ["IMG-20260906-WA0058.jpg", "Customization Item 30"],
+  ["IMG-20260906-WA0059.jpg", "Customization Item 31"],
+  ["IMG-20260906-WA0060.jpg", "Customization Item 32"]
 ];
