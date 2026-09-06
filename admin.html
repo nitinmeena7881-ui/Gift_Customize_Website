@@ -322,24 +322,15 @@ input,select{
 
 
   <div class="toolbar">
+
+
 <button
-  onclick="contactCustomerWhatsApp(
-    '${escapeJs(order.mobile)}',
-    '${escapeJs(order.order_id)}',
-    '${escapeJs(order.customer_name)}',
-    '${escapeJs(order.total_amount)}',
-    '${escapeJs(order.payment_status)}',
-    '${escapeJs(order.order_status)}'
-  )"
+  class="refresh"
+  onclick="loadOrders()"
 >
-  📱 WhatsApp Customer
+  Refresh
 </button>
-    <button
-      class="refresh"
-      onclick="loadOrders()"
-    >
-      ↻ Refresh Orders
-    </button>
+    
 
     <select
       id="statusFilter"
@@ -811,7 +802,18 @@ function renderOrders(orders){
             </option>
 
           </select>
-
+<button
+  onclick="contactCustomerWhatsApp(
+    '${escapeJs(order.mobile)}',
+    '${escapeJs(order.order_id)}',
+    '${escapeJs(order.customer_name)}',
+    '${escapeJs(order.total_amount)}',
+    '${escapeJs(order.payment_status)}',
+    '${escapeJs(order.order_status)}'
+  )"
+>
+  📱 WhatsApp Customer
+</button>
 
           <button
             class="refresh"
