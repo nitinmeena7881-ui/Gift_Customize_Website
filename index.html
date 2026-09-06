@@ -3,140 +3,250 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>Gift Customize | Premium Personalized Gifts</title>
-<meta name="description" content="Premium personalized gifts, luxury hampers and custom gift boxes. All India delivery. Online payment only.">
+
+<meta
+  name="description"
+  content="Premium personalized gifts, luxury hampers and custom gift boxes. All India delivery. Online payment only."
+>
+
 <link rel="stylesheet" href="style.css">
 
 <style>
+
 /* ===== LOGO ===== */
+
 .header .brand,
 footer .brand {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
+  display:flex;
+  align-items:center;
+  text-decoration:none;
 }
 
 .header .brand img,
 footer .brand img {
-  width: 150px;
-  height: auto;
-  max-height: 58px;
-  object-fit: contain;
-  display: block;
+  width:150px;
+  height:auto;
+  max-height:58px;
+  object-fit:contain;
+  display:block;
 }
 
 .header {
-  overflow: hidden;
+  overflow:hidden;
 }
 
 .header nav {
-  flex-wrap: wrap;
+  flex-wrap:wrap;
 }
 
 .cart-btn {
-  white-space: nowrap;
+  white-space:nowrap;
 }
 
-/* ===== MOBILE FIX ===== */
-@media (max-width: 700px) {
+
+/* ===== MOBILE ===== */
+
+@media (max-width:700px) {
+
   .header {
-    gap: 10px;
-    padding: 12px 14px;
+    gap:10px;
+    padding:12px 14px;
   }
 
   .header .brand img {
-    width: 115px;
-    max-height: 48px;
+    width:115px;
+    max-height:48px;
   }
 
   .header nav {
-    width: 100%;
-    order: 3;
-    justify-content: center;
-    gap: 12px;
-    overflow-x: auto;
-    white-space: nowrap;
+    width:100%;
+    order:3;
+    justify-content:center;
+    gap:12px;
+    overflow-x:auto;
+    white-space:nowrap;
   }
 
   .header nav a {
-    font-size: 12px;
+    font-size:12px;
   }
 
   .cart-btn {
-    font-size: 13px;
-    padding: 9px 12px;
+    font-size:13px;
+    padding:9px 12px;
   }
 
   .product-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns:repeat(2,minmax(0,1fr));
   }
 
   .product-card,
   .product,
   .card {
-    min-width: 0;
-    overflow: hidden;
+    min-width:0;
+    overflow:hidden;
   }
 
   .price,
   .product-price,
   .selling-price {
-    white-space: nowrap;
-    font-size: 17px;
+    white-space:nowrap;
+    font-size:17px;
   }
 
   .old-price,
   .original-price {
-    white-space: nowrap;
-    font-size: 12px;
+    white-space:nowrap;
+    font-size:12px;
   }
 
   .hero-actions {
-    flex-wrap: wrap;
+    flex-wrap:wrap;
   }
 
   .btn {
-    max-width: 100%;
+    max-width:100%;
   }
 
   footer .brand img {
-    width: 130px;
+    width:130px;
   }
 }
+
+
+/* ===== CHECKOUT ===== */
+
+.checkout-box {
+  max-width:560px;
+  max-height:90vh;
+  overflow-y:auto;
+}
+
+.checkout-box label {
+  display:block;
+  margin:14px 0;
+  font-size:14px;
+  font-weight:600;
+}
+
+.checkout-box input,
+.checkout-box textarea {
+  width:100%;
+  box-sizing:border-box;
+  margin-top:7px;
+  padding:13px 14px;
+  border:1px solid #ddd;
+  border-radius:10px;
+  font:inherit;
+  background:#fff;
+}
+
+.checkout-box textarea {
+  resize:vertical;
+}
+
+.checkout-two {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.checkout-summary {
+  margin:18px 0;
+  padding:16px;
+  border:1px solid #e8e2d7;
+  border-radius:12px;
+  background:#faf8f3;
+}
+
+.checkout-summary div {
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  margin:7px 0;
+}
+
+.checkout-summary b {
+  word-break:break-word;
+}
+
+.cod-note {
+  text-align:center;
+  font-size:13px;
+  color:#777;
+}
+
+@media(max-width:600px) {
+
+  .checkout-two {
+    grid-template-columns:1fr;
+    gap:0;
+  }
+
+  .checkout-box {
+    width:calc(100% - 30px);
+  }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
+
 <!-- ================= HEADER ================= -->
+
 <header class="header">
 
-  <a class="brand" href="#home" aria-label="Gift Customize Home">
+  <a
+    class="brand"
+    href="#home"
+    aria-label="Gift Customize Home"
+  >
+
     <img
       src="file_0000000072188211b5aa767afb65ba80.png"
       alt="Gift Customize Logo"
     >
+
   </a>
 
+
   <nav>
+
     <a href="#home">Home</a>
     <a href="#shop">Shop</a>
     <a href="#customize">Customize</a>
     <a href="#reviews">Reviews</a>
     <a href="#contact">Contact</a>
+
   </nav>
 
-  <button class="cart-btn" onclick="openCart()">
+
+  <button
+    class="cart-btn"
+    onclick="openCart()"
+  >
+
     Cart <span id="cartCount">0</span>
+
   </button>
 
 </header>
 
 
+
 <!-- ================= MAIN ================= -->
+
 <main>
 
+
 <!-- ================= HERO ================= -->
+
 <section id="home" class="hero">
 
   <div class="hero-copy">
@@ -156,44 +266,69 @@ footer .brand img {
       occasion.
     </p>
 
+
     <div class="hero-actions">
-      <a class="btn dark" href="#shop">
+
+      <a
+        class="btn dark"
+        href="#shop"
+      >
         Shop Gift Hampers
       </a>
 
-      <a class="btn light" href="#customize">
+
+      <a
+        class="btn light"
+        href="#customize"
+      >
         Build Your Hamper — ₹599
       </a>
+
     </div>
 
+
     <div class="trust-row">
+
       <span>✓ Online Payment</span>
       <span>✓ All India Delivery</span>
       <span>✓ 3 Day Delivery</span>
+
     </div>
 
   </div>
 
 
   <div class="hero-card">
-    <div class="gift-bow">✦</div>
-    <span>GIFT</span>
+
+    <div class="gift-bow">
+      ✦
+    </div>
+
+    <span>
+      GIFT
+    </span>
+
     <strong>
       CREATE<br>
       HAPPINESS
     </strong>
+
     <small>
       Personalized • Premium • Memorable
     </small>
+
   </div>
 
 </section>
 
 
+
 <!-- ================= OFFER ================= -->
+
 <section class="offer">
 
   <div>
+
     <p class="eyebrow">
       EXCLUSIVE OFFER
     </p>
@@ -206,21 +341,32 @@ footer .brand img {
       Choose <b>ANY 4 ITEMS</b> from our customization collection
       for just <strong>₹599</strong>.
     </p>
+
   </div>
 
-  <a class="btn dark" href="#customize">
+
+  <a
+    class="btn dark"
+    href="#customize"
+  >
     Customize Now →
   </a>
 
 </section>
 
 
-<!-- ================= 50% OFF SHOP ================= -->
-<section id="shop" class="section">
+
+<!-- ================= SHOP ================= -->
+
+<section
+  id="shop"
+  class="section"
+>
 
   <div class="section-head">
 
     <div>
+
       <p class="eyebrow">
         OUR COLLECTION
       </p>
@@ -228,6 +374,7 @@ footer .brand img {
       <h2>
         50% OFF Gift Hampers
       </h2>
+
     </div>
 
     <span>
@@ -236,17 +383,27 @@ footer .brand img {
 
   </div>
 
-  <div id="products" class="product-grid"></div>
+
+  <div
+    id="products"
+    class="product-grid"
+  ></div>
 
 </section>
 
 
+
 <!-- ================= CUSTOMIZE ================= -->
-<section id="customize" class="section custom-section">
+
+<section
+  id="customize"
+  class="section custom-section"
+>
 
   <div class="section-head">
 
     <div>
+
       <p class="eyebrow">
         MAKE IT YOURS
       </p>
@@ -254,7 +411,9 @@ footer .brand img {
       <h2>
         Any 4 Items — ₹599
       </h2>
+
     </div>
+
 
     <span id="selectedText">
       0 / 4 selected
@@ -264,17 +423,23 @@ footer .brand img {
 
 
   <p class="muted">
+
     Choose any four eligible items. These are customization choices
     and are separate from the 50% OFF hampers.
+
   </p>
 
 
-  <div id="customGrid" class="custom-grid"></div>
+  <div
+    id="customGrid"
+    class="custom-grid"
+  ></div>
 
 
   <div class="custom-summary">
 
     <div>
+
       <b id="selectedItems">
         No items selected
       </b>
@@ -282,7 +447,9 @@ footer .brand img {
       <small>
         Choose exactly 4 items to continue.
       </small>
+
     </div>
+
 
     <button
       class="btn dark"
@@ -298,79 +465,160 @@ footer .brand img {
 </section>
 
 
+
 <!-- ================= REVIEWS ================= -->
-<section id="reviews" class="reviews-section">
+
+<section
+  id="reviews"
+  class="reviews-section"
+>
+
   <div class="section-title">
-    <span>REAL CUSTOMER REVIEWS</span>
-    <h2>What Our Customers Say</h2>
-    <p>Real feedback from our happy customers ❤️</p>
+
+    <span>
+      REAL CUSTOMER REVIEWS
+    </span>
+
+    <h2>
+      What Our Customers Say
+    </h2>
+
+    <p>
+      Real feedback from our happy customers ❤️
+    </p>
+
   </div>
+
 
   <div class="reviews-grid">
 
-    <div class="review">
-      <img src="IMG-20260906-WA0008.jpg" alt="Customer Review">
-    </div>
 
     <div class="review">
-      <img src="IMG-20260906-WA0041.jpg" alt="Customer Review">
+      <img
+        src="IMG-20260906-WA0008.jpg"
+        alt="Customer Review"
+      >
     </div>
 
-    <div class="review">
-      <img src="IMG-20260906-WA0042.jpg" alt="Customer Review">
-    </div>
 
     <div class="review">
-      <img src="IMG-20260906-WA0043.jpg" alt="Customer Review">
+      <img
+        src="IMG-20260906-WA0041.jpg"
+        alt="Customer Review"
+      >
     </div>
 
-    <div class="review">
-      <img src="IMG-20260906-WA0044.jpg" alt="Customer Review">
-    </div>
 
     <div class="review">
-      <img src="IMG-20260906-WA0045.jpg" alt="Customer Review">
+      <img
+        src="IMG-20260906-WA0042.jpg"
+        alt="Customer Review"
+      >
     </div>
 
-    <div class="review">
-      <img src="IMG-20260906-WA0046.jpg" alt="Customer Review">
-    </div>
 
     <div class="review">
-      <img src="IMG-20260906-WA0047.jpg" alt="Customer Review">
+      <img
+        src="IMG-20260906-WA0043.jpg"
+        alt="Customer Review"
+      >
+    </div>
+
+
+    <div class="review">
+      <img
+        src="IMG-20260906-WA0044.jpg"
+        alt="Customer Review"
+      >
+    </div>
+
+
+    <div class="review">
+      <img
+        src="IMG-20260906-WA0045.jpg"
+        alt="Customer Review"
+      >
+    </div>
+
+
+    <div class="review">
+      <img
+        src="IMG-20260906-WA0046.jpg"
+        alt="Customer Review"
+      >
+    </div>
+
+
+    <div class="review">
+      <img
+        src="IMG-20260906-WA0047.jpg"
+        alt="Customer Review"
+      >
     </div>
 
   </div>
+
 </section>
 
+
+
 <!-- ================= POLICY ================= -->
+
 <section class="policy">
 
   <div>
+
     <b>🇮🇳 All India Delivery</b>
-    <span>Delivery within 3 days</span>
+
+    <span>
+      Delivery within 3 days
+    </span>
+
   </div>
 
+
   <div>
+
     <b>💳 Online Payment Only</b>
-    <span>COD is not available</span>
+
+    <span>
+      COD is not available
+    </span>
+
   </div>
 
+
   <div>
+
     <b>↩ 7 Days Refund</b>
-    <span>Refund policy available</span>
+
+    <span>
+      Refund policy available
+    </span>
+
   </div>
 
+
   <div>
+
     <b>💬 WhatsApp Support</b>
-    <span>8003163744</span>
+
+    <span>
+      8003163744
+    </span>
+
   </div>
 
 </section>
 
 
+
 <!-- ================= CONTACT ================= -->
-<section id="contact" class="contact">
+
+<section
+  id="contact"
+  class="contact"
+>
 
   <p class="eyebrow">
     NEED HELP?
@@ -384,7 +632,9 @@ footer .brand img {
     WhatsApp us for order help or contact support for assistance.
   </p>
 
+
   <div class="hero-actions">
+
 
     <a
       class="btn dark"
@@ -394,6 +644,7 @@ footer .brand img {
     >
       Chat on WhatsApp
     </a>
+
 
     <a
       class="btn light"
@@ -409,7 +660,9 @@ footer .brand img {
 </main>
 
 
+
 <!-- ================= FOOTER ================= -->
+
 <footer>
 
   <div class="brand">
@@ -421,9 +674,11 @@ footer .brand img {
 
   </div>
 
+
   <p>
     Premium personalized gifts for every occasion.
   </p>
+
 
   <small>
     © 2026 Gift Customize. All rights reserved.
@@ -432,10 +687,16 @@ footer .brand img {
 </footer>
 
 
+
 <!-- ================= CART ================= -->
-<div id="cartModal" class="modal">
+
+<div
+  id="cartModal"
+  class="modal"
+>
 
   <div class="modal-box">
+
 
     <button
       class="close"
@@ -444,15 +705,19 @@ footer .brand img {
       ×
     </button>
 
+
     <p class="eyebrow">
       YOUR CART
     </p>
+
 
     <h2>
       Gift Cart
     </h2>
 
+
     <div id="cartItems"></div>
+
 
     <div class="cart-total">
 
@@ -466,12 +731,14 @@ footer .brand img {
 
     </div>
 
+
     <button
       class="btn dark full"
       onclick="checkout()"
     >
       Proceed to Checkout
     </button>
+
 
     <p class="cod-note">
       Online payment only • Cash on Delivery unavailable
@@ -482,9 +749,310 @@ footer .brand img {
 </div>
 
 
-<!-- ================= JAVASCRIPT ================= -->
+
+<!-- ================= CHECKOUT ================= -->
+
+<div
+  id="checkoutModal"
+  class="modal"
+>
+
+  <div class="modal-box checkout-box">
+
+
+    <button
+      class="close"
+      onclick="closeCheckout()"
+      type="button"
+    >
+      ×
+    </button>
+
+
+    <p class="eyebrow">
+      SECURE CHECKOUT
+    </p>
+
+
+    <h2>
+      Complete Your Order
+    </h2>
+
+
+    <p class="muted">
+      Please enter your delivery details.
+    </p>
+
+
+    <form
+      id="checkoutForm"
+      onsubmit="submitOrder(event)"
+    >
+
+
+      <label>
+
+        Full Name
+
+        <input
+          id="customerName"
+          type="text"
+          placeholder="Enter your full name"
+          required
+        >
+
+      </label>
+
+
+      <label>
+
+        Mobile Number
+
+        <input
+          id="customerMobile"
+          type="tel"
+          inputmode="numeric"
+          maxlength="10"
+          placeholder="10 digit mobile number"
+          pattern="[0-9]{10}"
+          required
+        >
+
+      </label>
+
+
+      <label>
+
+        Full Address
+
+        <textarea
+          id="customerAddress"
+          rows="3"
+          placeholder="House/Flat No., Area, Street"
+          required
+        ></textarea>
+
+      </label>
+
+
+      <div class="checkout-two">
+
+
+        <label>
+
+          City
+
+          <input
+            id="customerCity"
+            type="text"
+            placeholder="City"
+            required
+          >
+
+        </label>
+
+
+        <label>
+
+          State
+
+          <input
+            id="customerState"
+            type="text"
+            placeholder="State"
+            required
+          >
+
+        </label>
+
+      </div>
+
+
+      <label>
+
+        PIN Code
+
+        <input
+          id="customerPincode"
+          type="text"
+          inputmode="numeric"
+          maxlength="6"
+          placeholder="6 digit PIN code"
+          pattern="[0-9]{6}"
+          required
+        >
+
+      </label>
+
+
+      <div class="checkout-summary">
+
+        <div>
+
+          <span>
+            Items
+          </span>
+
+          <b id="checkoutItemsCount">
+            0
+          </b>
+
+        </div>
+
+
+        <div>
+
+          <span>
+            Total
+          </span>
+
+          <b id="checkoutTotal">
+            ₹0.00
+          </b>
+
+        </div>
+
+      </div>
+
+
+      <button
+        class="btn dark full"
+        id="placeOrderBtn"
+        type="submit"
+      >
+        Continue to Payment
+      </button>
+
+
+      <p class="cod-note">
+        💳 Online Payment Only • COD is not available
+      </p>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+
+<!-- ================= ORDER SUCCESS ================= -->
+
+<div
+  id="orderSuccessModal"
+  class="modal"
+>
+
+  <div class="modal-box">
+
+
+    <button
+      class="close"
+      onclick="closeOrderSuccess()"
+      type="button"
+    >
+      ×
+    </button>
+
+
+    <p class="eyebrow">
+      ORDER CREATED
+    </p>
+
+
+    <h2>
+      Thank You! 🎁
+    </h2>
+
+
+    <p>
+      Your order has been received successfully.
+    </p>
+
+
+    <div class="checkout-summary">
+
+
+      <div>
+
+        <span>
+          Order ID
+        </span>
+
+        <b id="successOrderId">
+          —
+        </b>
+
+      </div>
+
+
+      <div>
+
+        <span>
+          Total
+        </span>
+
+        <b id="successTotal">
+          ₹0.00
+        </b>
+
+      </div>
+
+    </div>
+
+
+    <p class="muted">
+
+      Please complete your online payment.
+      Our team will confirm your order after payment verification.
+
+    </p>
+
+
+    <a
+      class="btn dark full"
+      href="https://wa.me/918003163744"
+      target="_blank"
+      rel="noopener"
+    >
+      Send Order Details on WhatsApp
+    </a>
+
+  </div>
+
+</div>
+
+
+
+<!-- ================= SUPABASE ================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const SUPABASE_URL =
+  "https://tfsqaccacdundsmdyetc.supabase.co";
+
+const SUPABASE_KEY =
+  "sb_publishable_f9TuYFxn5Vye5OBPjvrw3Q_6hFzByFd";
+
+
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+</script>
+
+
+
+<!-- ================= WEBSITE JS ================= -->
+
 <script src="products.js"></script>
+
 <script src="script.js"></script>
+
 
 </body>
 </html>
