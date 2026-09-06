@@ -867,6 +867,55 @@ footer p{
 
   .inside p {
     font-size: 11px;
+    .reviews-section{
+  padding:70px 20px;
+}
+
+.reviews-grid{
+  max-width:1200px;
+  margin:35px auto 0;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+.review{
+  background:#fff;
+  border:1px solid #e8e2d7;
+  border-radius:16px;
+  padding:10px;
+  box-shadow:0 8px 25px rgba(0,0,0,.08);
+  overflow:hidden;
+}
+
+.review img{
+  width:100%;
+  height:360px;
+  object-fit:contain;
+  display:block;
+  border-radius:10px;
+}
+
+@media(max-width:900px){
+  .reviews-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .review img{
+    height:300px;
+  }
+}
+
+@media(max-width:600px){
+  .reviews-grid{
+    grid-template-columns:1fr;
+  }
+
+  .review img{
+    height:auto;
+    max-height:500px;
+  }
+}
   }
 
 }
