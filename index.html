@@ -6,61 +6,515 @@
 <title>Gift Customize | Premium Personalized Gifts</title>
 <meta name="description" content="Premium personalized gifts, luxury hampers and custom gift boxes. All India delivery. Online payment only.">
 <link rel="stylesheet" href="style.css">
+
+<style>
+/* ===== LOGO ===== */
+.header .brand,
+footer .brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.header .brand img,
+footer .brand img {
+  width: 150px;
+  height: auto;
+  max-height: 58px;
+  object-fit: contain;
+  display: block;
+}
+
+.header {
+  overflow: hidden;
+}
+
+.header nav {
+  flex-wrap: wrap;
+}
+
+.cart-btn {
+  white-space: nowrap;
+}
+
+/* ===== MOBILE FIX ===== */
+@media (max-width: 700px) {
+  .header {
+    gap: 10px;
+    padding: 12px 14px;
+  }
+
+  .header .brand img {
+    width: 115px;
+    max-height: 48px;
+  }
+
+  .header nav {
+    width: 100%;
+    order: 3;
+    justify-content: center;
+    gap: 12px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .header nav a {
+    font-size: 12px;
+  }
+
+  .cart-btn {
+    font-size: 13px;
+    padding: 9px 12px;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .product-card,
+  .product,
+  .card {
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .price,
+  .product-price,
+  .selling-price {
+    white-space: nowrap;
+    font-size: 17px;
+  }
+
+  .old-price,
+  .original-price {
+    white-space: nowrap;
+    font-size: 12px;
+  }
+
+  .hero-actions {
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    max-width: 100%;
+  }
+
+  footer .brand img {
+    width: 130px;
+  }
+}
+</style>
 </head>
+
 <body>
+
+<!-- ================= HEADER ================= -->
 <header class="header">
-  <a class="brand" href="#home"><span class="brand-mark">GC</span><span>Gift <b>Customize</b></span></a>
+
+  <a class="brand" href="#home" aria-label="Gift Customize Home">
+    <img
+      src="file_0000000072188211b5aa767afb65ba80.png"
+      alt="Gift Customize Logo"
+    >
+  </a>
+
   <nav>
-    <a href="#home">Home</a><a href="#shop">Shop</a><a href="#customize">Customize</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a>
+    <a href="#home">Home</a>
+    <a href="#shop">Shop</a>
+    <a href="#customize">Customize</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
   </nav>
-  <button class="cart-btn" onclick="openCart()">Cart <span id="cartCount">0</span></button>
+
+  <button class="cart-btn" onclick="openCart()">
+    Cart <span id="cartCount">0</span>
+  </button>
+
 </header>
 
+
+<!-- ================= MAIN ================= -->
 <main>
+
+<!-- ================= HERO ================= -->
 <section id="home" class="hero">
+
   <div class="hero-copy">
-    <p class="eyebrow">PERSONALIZED GIFTS • MADE WITH LOVE</p>
-    <h1>Make Every Moment<br><em>Extra Special.</em></h1>
-    <p>Premium gift hampers, personalized surprises and thoughtful gifts designed for birthdays, anniversaries, couples and every beautiful occasion.</p>
-    <div class="hero-actions"><a class="btn dark" href="#shop">Shop Gift Hampers</a><a class="btn light" href="#customize">Build Your Hamper — ₹599</a></div>
-    <div class="trust-row"><span>✓ Online Payment</span><span>✓ All India Delivery</span><span>✓ 3 Day Delivery</span></div>
+
+    <p class="eyebrow">
+      PERSONALIZED GIFTS • MADE WITH LOVE
+    </p>
+
+    <h1>
+      Make Every Moment<br>
+      <em>Extra Special.</em>
+    </h1>
+
+    <p>
+      Premium gift hampers, personalized surprises and thoughtful gifts
+      designed for birthdays, anniversaries, couples and every beautiful
+      occasion.
+    </p>
+
+    <div class="hero-actions">
+      <a class="btn dark" href="#shop">
+        Shop Gift Hampers
+      </a>
+
+      <a class="btn light" href="#customize">
+        Build Your Hamper — ₹599
+      </a>
+    </div>
+
+    <div class="trust-row">
+      <span>✓ Online Payment</span>
+      <span>✓ All India Delivery</span>
+      <span>✓ 3 Day Delivery</span>
+    </div>
+
   </div>
-  <div class="hero-card"><div class="gift-bow">✦</div><span>GIFT</span><strong>CREATE<br>HAPPINESS</strong><small>Personalized • Premium • Memorable</small></div>
+
+
+  <div class="hero-card">
+    <div class="gift-bow">✦</div>
+    <span>GIFT</span>
+    <strong>
+      CREATE<br>
+      HAPPINESS
+    </strong>
+    <small>
+      Personalized • Premium • Memorable
+    </small>
+  </div>
+
 </section>
 
+
+<!-- ================= OFFER ================= -->
 <section class="offer">
-  <div><p class="eyebrow">EXCLUSIVE OFFER</p><h2>Build Your Own Hamper</h2><p>Choose <b>ANY 4 ITEMS</b> from our customization collection for just <strong>₹599</strong>.</p></div>
-  <a class="btn dark" href="#customize">Customize Now →</a>
-</section>
 
-<section id="shop" class="section">
-  <div class="section-head"><div><p class="eyebrow">OUR COLLECTION</p><h2>50% OFF Gift Hampers</h2></div><span>19 premium hampers</span></div>
-  <div id="products" class="product-grid"></div>
-</section>
+  <div>
+    <p class="eyebrow">
+      EXCLUSIVE OFFER
+    </p>
 
-<section id="customize" class="section custom-section">
-  <div class="section-head"><div><p class="eyebrow">MAKE IT YOURS</p><h2>Any 4 Items — ₹599</h2></div><span id="selectedText">0 / 4 selected</span></div>
-  <p class="muted">Choose any four eligible items. These are customization choices and are separate from the 50% OFF hampers.</p>
-  <div id="customGrid" class="custom-grid"></div>
-  <div class="custom-summary"><div><b id="selectedItems">No items selected</b><small>Choose exactly 4 items to continue.</small></div><button class="btn dark" id="customCart" disabled onclick="addCustomToCart()">Add Custom Hamper — ₹599</button></div>
-</section>
+    <h2>
+      Build Your Own Hamper
+    </h2>
 
-<section id="reviews" class="section">
-  <div class="section-head"><div><p class="eyebrow">CUSTOMER LOVE</p><h2>What Our Customers Say</h2></div></div>
-  <div class="review-grid">
-    <article class="review"><div>★★★★★</div><h3>Beautiful & thoughtful</h3><p>“The hamper looked premium and made the occasion really special.”</p><small>Customer feedback</small></article>
-    <article class="review"><div>★★★★★</div><h3>Lovely presentation</h3><p>“Everything was packed beautifully. A very sweet gifting experience.”</p><small>Customer feedback</small></article>
-    <article class="review"><div>★★★★★</div><h3>Great surprise</h3><p>“The personalized touch made the gift feel much more meaningful.”</p><small>Customer feedback</small></article>
+    <p>
+      Choose <b>ANY 4 ITEMS</b> from our customization collection
+      for just <strong>₹599</strong>.
+    </p>
   </div>
+
+  <a class="btn dark" href="#customize">
+    Customize Now →
+  </a>
+
 </section>
 
-<section class="policy"><div><b>🇮🇳 All India Delivery</b><span>Delivery within 3 days</span></div><div><b>💳 Online Payment Only</b><span>COD is not available</span></div><div><b>↩ 7 Days Refund</b><span>Refund policy available</span></div><div><b>💬 WhatsApp Support</b><span>8003163744</span></div></section>
 
-<section id="contact" class="contact"><p class="eyebrow">NEED HELP?</p><h2>Let's make your gift memorable.</h2><p>WhatsApp us for order help or contact support for assistance.</p><div class="hero-actions"><a class="btn dark" href="https://wa.me/918003163744" target="_blank">Chat on WhatsApp</a><a class="btn light" href="tel:+918764373020">Support: 8764373020</a></div></section>
+<!-- ================= 50% OFF SHOP ================= -->
+<section id="shop" class="section">
+
+  <div class="section-head">
+
+    <div>
+      <p class="eyebrow">
+        OUR COLLECTION
+      </p>
+
+      <h2>
+        50% OFF Gift Hampers
+      </h2>
+    </div>
+
+    <span>
+      19 premium hampers
+    </span>
+
+  </div>
+
+  <div id="products" class="product-grid"></div>
+
+</section>
+
+
+<!-- ================= CUSTOMIZE ================= -->
+<section id="customize" class="section custom-section">
+
+  <div class="section-head">
+
+    <div>
+      <p class="eyebrow">
+        MAKE IT YOURS
+      </p>
+
+      <h2>
+        Any 4 Items — ₹599
+      </h2>
+    </div>
+
+    <span id="selectedText">
+      0 / 4 selected
+    </span>
+
+  </div>
+
+
+  <p class="muted">
+    Choose any four eligible items. These are customization choices
+    and are separate from the 50% OFF hampers.
+  </p>
+
+
+  <div id="customGrid" class="custom-grid"></div>
+
+
+  <div class="custom-summary">
+
+    <div>
+      <b id="selectedItems">
+        No items selected
+      </b>
+
+      <small>
+        Choose exactly 4 items to continue.
+      </small>
+    </div>
+
+    <button
+      class="btn dark"
+      id="customCart"
+      disabled
+      onclick="addCustomToCart()"
+    >
+      Add Custom Hamper — ₹599
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= REVIEWS ================= -->
+<section id="reviews" class="section">
+
+  <div class="section-head">
+
+    <div>
+      <p class="eyebrow">
+        CUSTOMER LOVE
+      </p>
+
+      <h2>
+        What Our Customers Say
+      </h2>
+    </div>
+
+  </div>
+
+
+  <div class="review-grid">
+
+    <article class="review">
+      <div>★★★★★</div>
+
+      <h3>
+        Beautiful & thoughtful
+      </h3>
+
+      <p>
+        “The hamper looked premium and made the occasion really special.”
+      </p>
+
+      <small>
+        Customer feedback
+      </small>
+    </article>
+
+
+    <article class="review">
+      <div>★★★★★</div>
+
+      <h3>
+        Lovely presentation
+      </h3>
+
+      <p>
+        “Everything was packed beautifully. A very sweet gifting experience.”
+      </p>
+
+      <small>
+        Customer feedback
+      </small>
+    </article>
+
+
+    <article class="review">
+      <div>★★★★★</div>
+
+      <h3>
+        Great surprise
+      </h3>
+
+      <p>
+        “The personalized touch made the gift feel much more meaningful.”
+      </p>
+
+      <small>
+        Customer feedback
+      </small>
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- ================= POLICY ================= -->
+<section class="policy">
+
+  <div>
+    <b>🇮🇳 All India Delivery</b>
+    <span>Delivery within 3 days</span>
+  </div>
+
+  <div>
+    <b>💳 Online Payment Only</b>
+    <span>COD is not available</span>
+  </div>
+
+  <div>
+    <b>↩ 7 Days Refund</b>
+    <span>Refund policy available</span>
+  </div>
+
+  <div>
+    <b>💬 WhatsApp Support</b>
+    <span>8003163744</span>
+  </div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="contact">
+
+  <p class="eyebrow">
+    NEED HELP?
+  </p>
+
+  <h2>
+    Let's make your gift memorable.
+  </h2>
+
+  <p>
+    WhatsApp us for order help or contact support for assistance.
+  </p>
+
+  <div class="hero-actions">
+
+    <a
+      class="btn dark"
+      href="https://wa.me/918003163744"
+      target="_blank"
+      rel="noopener"
+    >
+      Chat on WhatsApp
+    </a>
+
+    <a
+      class="btn light"
+      href="tel:+918764373020"
+    >
+      Support: 8764373020
+    </a>
+
+  </div>
+
+</section>
+
 </main>
 
-<footer><div class="brand"><span class="brand-mark">GC</span><span>Gift <b>Customize</b></span></div><p>Premium personalized gifts for every occasion.</p><small>© 2026 Gift Customize. All rights reserved.</small></footer>
 
-<div id="cartModal" class="modal"><div class="modal-box"><button class="close" onclick="closeCart()">×</button><p class="eyebrow">YOUR CART</p><h2>Gift Cart</h2><div id="cartItems"></div><div class="cart-total"><span>Total</span><b id="cartTotal">₹0</b></div><button class="btn dark full" onclick="checkout()">Proceed to Checkout</button><p class="cod-note">Online payment only • Cash on Delivery unavailable</p></div></div>
-<script src="products.js"></script><script src="script.js"></script>
-</body></html>
+<!-- ================= FOOTER ================= -->
+<footer>
+
+  <div class="brand">
+
+    <img
+      src="file_0000000072188211b5aa767afb65ba80.png"
+      alt="Gift Customize Logo"
+    >
+
+  </div>
+
+  <p>
+    Premium personalized gifts for every occasion.
+  </p>
+
+  <small>
+    © 2026 Gift Customize. All rights reserved.
+  </small>
+
+</footer>
+
+
+<!-- ================= CART ================= -->
+<div id="cartModal" class="modal">
+
+  <div class="modal-box">
+
+    <button
+      class="close"
+      onclick="closeCart()"
+    >
+      ×
+    </button>
+
+    <p class="eyebrow">
+      YOUR CART
+    </p>
+
+    <h2>
+      Gift Cart
+    </h2>
+
+    <div id="cartItems"></div>
+
+    <div class="cart-total">
+
+      <span>
+        Total
+      </span>
+
+      <b id="cartTotal">
+        ₹0
+      </b>
+
+    </div>
+
+    <button
+      class="btn dark full"
+      onclick="checkout()"
+    >
+      Proceed to Checkout
+    </button>
+
+    <p class="cod-note">
+      Online payment only • Cash on Delivery unavailable
+    </p>
+
+  </div>
+
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+<script src="products.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
