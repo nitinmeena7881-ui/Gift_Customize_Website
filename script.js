@@ -128,7 +128,7 @@ function addProduct(i) {
 
   cart.push({
     name: products[i].name,
-    price: products[i].price,
+    price: Number(products[i].price),
     image: products[i].image
   });
 
@@ -138,7 +138,7 @@ function addProduct(i) {
 
 
 /* =========================
-   ADD CUSTOM HAMPer
+   ADD CUSTOM HAMPER
 ========================= */
 
 function addCustomToCart() {
@@ -223,7 +223,7 @@ function updateCart() {
   document.getElementById("cartTotal").textContent =
     money(
       cart.reduce(
-        (total, item) => total + item.price,
+        (total, item) => total + Number(item.price),
         0
       )
     );
@@ -263,9 +263,343 @@ function checkout() {
     return;
   }
 
-  alert(
-    "Checkout foundation is ready. Online payment only. COD is not available."
-  );
+  closeCart();
+
+  const total =
+    cart.reduce(
+      (sum, item) => sum + Number(item.price),
+      0
+    );
+
+  document.getElementById("checkoutItemsCount").textContent =
+    cart.length;
+
+  document.getElementById("checkoutTotal").textContent =
+    money(total);
+
+  document.getElementById("checkoutModal").style.display =
+    "block";
+}
+
+
+function closeCheckout() {
+
+  document.getElementById("checkoutModal").style.display =
+    "none";
+
+}
+
+
+/* =========================
+   CREATE ORDER
+========================= */
+
+async function submitOrder(event) {
+
+  event.preventDefault();
+
+  if (!cart.length) {
+
+    alert("Your cart is empty.");
+
+    return;
+  }
+
+
+  const name =
+    document.getElementById("customerName")
+      .value
+      .trim();
+
+
+  const mobile =
+    document.getElementById("customerMobile")
+      .value
+      .trim();
+
+
+  const address =
+    document.getElementById("customerAddress")
+      .value
+      .trim();
+
+
+  const city =
+    document.getElementById("customerCity")
+      .value
+      .trim();
+
+
+  const state =
+    document.getElementById("customerState")
+      .value
+      .trim();
+
+
+  const pincode =
+    document.getElementById("customerPincode")
+      .value
+      .trim();
+
+
+  /* =========================
+     VALIDATION
+  ========================= */
+
+  if (!/^[0-9]{10}$/.test(mobile)) {
+
+    alert(
+      "Please enter a valid 10 digit mobile number."
+    );
+
+    return;
+  }
+
+
+  if (!/^[0-9]{6}$/.test(pincode)) {
+
+    alert(
+      "Please enter a valid 6 digit PIN code."
+    );
+
+    return;
+  }
+
+
+  if (name.length < 2) {
+
+    alert("Please enter your full name.");
+
+    return;
+  }
+
+
+  if (address.length < 5) {
+
+    alert("Please enter your complete address.");
+
+    return;
+  }
+
+
+  /* =========================
+     TOTAL
+  ========================= */
+
+  const total =
+    cart.reduce(
+      (sum, item) => sum + Number(item.price),
+      0
+    );
+
+
+  /* =========================
+     ORDER ID
+  ========================= */
+
+  const orderId =
+    "GC-" +
+    Date.now().toString().slice(-8);
+
+
+  /* =========================
+     ORDER ITEMS
+  ========================= */
+
+  const orderItems =
+    cart.map(item => ({
+
+      name: item.name,
+
+      price: Number(item.price),
+
+      image: item.image || null,
+
+      items: item.items || []
+
+    }));
+
+
+  /* =========================
+     BUTTON
+  ========================= */
+
+  const button =
+    document.getElementById("placeOrderBtn");
+
+  button.disabled = true;
+
+  button.textContent =
+    "Creating Order...";
+
+
+  try {
+
+    /* =========================
+       SAVE TO SUPABASE
+    ========================= */
+
+    const { data, error } =
+      await supabaseClient
+        .from("orders")
+        .insert({
+
+          order_id: orderId,
+
+          customer_name: name,
+
+          mobile: mobile,
+
+          address: address,
+
+          city: city,
+
+          state: state,
+
+          pincode: pincode,
+
+          items: orderItems,
+
+          total_amount: total,
+
+          payment_status: "Pending",
+
+          order_status: "Pending"
+
+        })
+        .select()
+        .single();
+
+
+    /* =========================
+       ERROR
+    ========================= */
+
+    if (error) {
+
+      console.error(
+        "Supabase Order Error:",
+        error
+      );
+
+      alert(
+        "Order could not be created. Please try again."
+      );
+
+      button.disabled = false;
+
+      button.textContent =
+        "Continue to Payment";
+
+      return;
+    }
+
+
+    /* =========================
+       SAVE ORDER LOCALLY
+    ========================= */
+
+    localStorage.setItem(
+      "lastGiftCustomizeOrder",
+      JSON.stringify({
+
+        orderId: orderId,
+
+        name: name,
+
+        mobile: mobile,
+
+        address: address,
+
+        city: city,
+
+        state: state,
+
+        pincode: pincode,
+
+        total: total
+
+      })
+    );
+
+
+    /* =========================
+       SUCCESS
+    ========================= */
+
+    document.getElementById(
+      "successOrderId"
+    ).textContent =
+      orderId;
+
+
+    document.getElementById(
+      "successTotal"
+    ).textContent =
+      money(total);
+
+
+    document.getElementById(
+      "checkoutModal"
+    ).style.display =
+      "none";
+
+
+    document.getElementById(
+      "orderSuccessModal"
+    ).style.display =
+      "block";
+
+
+    /* =========================
+       CLEAR CART
+    ========================= */
+
+    cart = [];
+
+    updateCart();
+
+
+    document.getElementById(
+      "checkoutForm"
+    ).reset();
+
+
+    button.disabled = false;
+
+    button.textContent =
+      "Continue to Payment";
+
+
+  } catch (error) {
+
+    console.error(error);
+
+    alert(
+      "Something went wrong. Please try again."
+    );
+
+    button.disabled = false;
+
+    button.textContent =
+      "Continue to Payment";
+
+  }
+
+}
+
+
+/* =========================
+   ORDER SUCCESS
+========================= */
+
+function closeOrderSuccess() {
+
+  document.getElementById(
+    "orderSuccessModal"
+  ).style.display =
+    "none";
+
 }
 
 
