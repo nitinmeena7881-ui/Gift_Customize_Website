@@ -52,7 +52,6 @@ function renderProducts() {
 
 
 /* ================= CUSTOM ITEMS ================= */
-
 function renderCustom() {
   const box = document.getElementById("customGrid");
 
@@ -65,14 +64,20 @@ function renderCustom() {
     >
 
       <div class="custom-photo">
-        ${x[0]}
+        <img
+          src="${x[0]}"
+          alt="${x[1]}"
+          loading="lazy"
+        >
       </div>
 
       <b>${x[1]}</b>
 
-      <small>
-        Eligible for ₹599 hamper
-      </small>
+      ${
+        selected.includes(i)
+          ? `<small class="selected-label">✓ Selected</small>`
+          : `<small>Tap to select</small>`
+      }
 
     </div>
   `).join("");
@@ -88,6 +93,7 @@ function renderCustom() {
   document.getElementById("customCart").disabled =
     selected.length !== 4;
 }
+
 
 
 /* ================= CUSTOM SELECTION ================= */
