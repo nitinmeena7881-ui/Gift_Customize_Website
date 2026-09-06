@@ -693,6 +693,7 @@ async function submitOrder(event) {
 }
 
 
+
 /* =========================
    SUBMIT PAYMENT / UTR
 ========================= */
@@ -783,6 +784,20 @@ async function submitPayment() {
     }
 
 
+    /* SAVE UTR WITH ORDER DETAILS */
+
+    order.utr = utr;
+
+    order.paymentStatus =
+      "Submitted";
+
+
+    localStorage.setItem(
+      "lastGiftCustomizeOrder",
+      JSON.stringify(order)
+    );
+
+
     /* SUCCESS */
 
     button.textContent =
@@ -800,12 +815,6 @@ async function submitPayment() {
       "Our team will verify your payment."
     );
 
-
-    localStorage.removeItem(
-      "lastGiftCustomizeOrder"
-    );
-
-
   } catch (error) {
 
     console.error(error);
@@ -822,6 +831,8 @@ async function submitPayment() {
       "Submit Payment Details";
   }
 }
+
+
 
 
 /* =========================
