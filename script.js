@@ -474,25 +474,25 @@ async function submitOrder(event) {
     /* =========================
        ERROR
     ========================= */
+if (error) {
 
-    if (error) {
+  console.error("Supabase Order Error:", error);
 
-      console.error(
-        "Supabase Order Error:",
-        error
-      );
+  alert(
+    "Supabase Error:\n" +
+    (error.message || "Unknown error") +
+    "\n\nDetails:\n" +
+    (error.details || "No details")
+  );
 
-      alert(
-        "Order could not be created. Please try again."
-      );
+  button.disabled = false;
 
-      button.disabled = false;
+  button.textContent =
+    "Continue to Payment";
 
-      button.textContent =
-        "Continue to Payment";
-
-      return;
-    }
+  return;
+}
+    
 
 
     /* =========================
