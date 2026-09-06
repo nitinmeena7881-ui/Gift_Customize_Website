@@ -1000,23 +1000,56 @@ footer .brand img {
 
     </div>
 
+<div class="payment-section">
 
-    <p class="muted">
+  <h3>Complete Your Payment 💳</h3>
 
-      Please complete your online payment.
-      Our team will confirm your order after payment verification.
+  <p class="muted">
+    Scan the QR code below and pay the exact order amount.
+  </p>
 
-    </p>
-
-
-    <a
-      class="btn dark full"
-      href="https://wa.me/918003163744"
-      target="_blank"
-      rel="noopener"
+  <div class="payment-qr">
+    <img
+      src="IMG-20260906-WA0019.jpg"
+      alt="Gift Customize UPI Payment QR Code"
     >
-      Send Order Details on WhatsApp
-    </a>
+  </div>
+
+  <p class="upi-note">
+    UPI ID: <b>anishka6778@fam</b>
+  </p>
+
+  <label>
+    UTR / Transaction ID
+
+    <input
+      id="paymentUtr"
+      type="text"
+      placeholder="Enter your UTR / Transaction ID"
+      maxlength="50"
+      required
+    >
+  </label>
+
+  <button
+    class="btn dark full"
+    type="button"
+    onclick="submitPayment()"
+  >
+    Submit Payment Details
+  </button>
+
+  <a
+    class="btn light full"
+    href="https://wa.me/918003163744"
+    target="_blank"
+    rel="noopener"
+  >
+    Send Order Details on WhatsApp
+  </a>
+
+</div>
+    
 
   </div>
 
