@@ -5,12 +5,12 @@ function money(n) {
   return "₹" + Number(n).toFixed(2);
 }
 
-/* ================= PRODUCTS ================= */
+/* =========================
+   50% OFF HAMPERS
+========================= */
 
 function renderProducts() {
   const box = document.getElementById("products");
-
-  if (!box) return;
 
   box.innerHTML = products.map((p, i) => `
     <article class="product">
@@ -20,7 +20,6 @@ function renderProducts() {
           src="${p.image}"
           alt="${p.name}"
           loading="lazy"
-          onerror="this.parentElement.innerHTML='<span>Gift Customize</span>'"
         >
       </div>
 
@@ -37,6 +36,11 @@ function renderProducts() {
           <b class="sale">${money(p.price)}</b>
         </div>
 
+        <div class="inside">
+          <strong>What's Inside</strong>
+          <p>${p.description}</p>
+        </div>
+
         <button
           class="btn dark"
           onclick="addProduct(${i})"
@@ -51,11 +55,12 @@ function renderProducts() {
 }
 
 
-/* ================= CUSTOM ITEMS ================= */
+/* =========================
+   CUSTOMIZE — ANY 4 ₹599
+========================= */
+
 function renderCustom() {
   const box = document.getElementById("customGrid");
-
-  if (!box) return;
 
   box.innerHTML = customItems.map((x, i) => `
     <div
@@ -95,8 +100,9 @@ function renderCustom() {
 }
 
 
-
-/* ================= CUSTOM SELECTION ================= */
+/* =========================
+   SELECT CUSTOM ITEM
+========================= */
 
 function toggleCustom(i) {
 
@@ -114,16 +120,16 @@ function toggleCustom(i) {
 }
 
 
-/* ================= ADD PRODUCT ================= */
+/* =========================
+   ADD HAMPER TO CART
+========================= */
 
 function addProduct(i) {
 
-  const product = products[i];
-
   cart.push({
-    name: product.name,
-    price: Number(product.price),
-    image: product.image
+    name: products[i].name,
+    price: products[i].price,
+    image: products[i].image
   });
 
   updateCart();
@@ -131,87 +137,107 @@ function addProduct(i) {
 }
 
 
-/* ================= CUSTOM HAMPER ================= */
+/* =========================
+   ADD CUSTOM HAMPer
+========================= */
 
 function addCustomToCart() {
 
   if (selected.length !== 4) {
+
     alert("Please select exactly 4 items.");
+
     return;
   }
 
   cart.push({
+
     name: "Build Your Own Hamper — Any 4 Items",
+
     price: 599,
-    items: selected.map(i => customItems[i][1])
+
+    items: selected.map(
+      i => customItems[i][1]
+    )
+
   });
 
   selected = [];
 
   renderCustom();
+
   updateCart();
+
   openCart();
 }
 
 
-/* ================= CART ================= */
+/* =========================
+   CART
+========================= */
 
 function updateCart() {
 
-  const count = document.getElementById("cartCount");
-  const itemsBox = document.getElementById("cartItems");
-  const totalBox = document.getElementById("cartTotal");
+  document.getElementById("cartCount").textContent =
+    cart.length;
 
-  if (count) {
-    count.textContent = cart.length;
+  const cartBox =
+    document.getElementById("cartItems");
+
+  if (!cart.length) {
+
+    cartBox.innerHTML =
+      `<p class="muted">Your cart is empty.</p>`;
+
+  } else {
+
+    cartBox.innerHTML = cart.map((x, i) => `
+
+      <div class="cart-row">
+
+        <span>
+
+          <b>${x.name}</b>
+
+          ${
+            x.items
+              ? `<small style="
+                    display:block;
+                    color:#888;
+                    margin-top:5px;
+                  ">
+                  ${x.items.join(" • ")}
+                 </small>`
+              : ""
+          }
+
+        </span>
+
+        <b>${money(x.price)}</b>
+
+      </div>
+
+    `).join("");
   }
 
-  if (itemsBox) {
-
-    itemsBox.innerHTML = cart.length
-      ? cart.map((x, i) => `
-        <div class="cart-row">
-
-          <span>
-            ${x.name}
-
-            ${
-              x.items
-                ? `<small style="display:block;color:#888;margin-top:4px">
-                    ${x.items.join(" • ")}
-                   </small>`
-                : ""
-            }
-          </span>
-
-          <b>
-            ${money(x.price)}
-          </b>
-
-        </div>
-      `).join("")
-
-      : `<p class="muted">Your cart is empty.</p>`;
-  }
-
-  if (totalBox) {
-
-    totalBox.textContent =
-      money(cart.reduce((sum, item) => sum + item.price, 0));
-
-  }
+  document.getElementById("cartTotal").textContent =
+    money(
+      cart.reduce(
+        (total, item) => total + item.price,
+        0
+      )
+    );
 }
 
 
-/* ================= CART MODAL ================= */
+/* =========================
+   CART MODAL
+========================= */
 
 function openCart() {
 
-  const modal = document.getElementById("cartModal");
-
-  if (modal) {
-    modal.style.display = "block";
-  }
+  document.getElementById("cartModal").style.display =
+    "block";
 
   updateCart();
 }
@@ -219,33 +245,36 @@ function openCart() {
 
 function closeCart() {
 
-  const modal = document.getElementById("cartModal");
-
-  if (modal) {
-    modal.style.display = "none";
-  }
+  document.getElementById("cartModal").style.display =
+    "none";
 }
 
 
-/* ================= CHECKOUT ================= */
+/* =========================
+   CHECKOUT
+========================= */
 
 function checkout() {
 
   if (!cart.length) {
 
     alert("Please add a product first.");
-    return;
 
+    return;
   }
 
   alert(
-    "Checkout foundation is ready.\n\nNext step: Online QR payment + customer address + order management."
+    "Checkout foundation is ready. Online payment only. COD is not available."
   );
 }
 
 
-/* ================= START WEBSITE ================= */
+/* =========================
+   START WEBSITE
+========================= */
 
 renderProducts();
+
 renderCustom();
+
 updateCart();
